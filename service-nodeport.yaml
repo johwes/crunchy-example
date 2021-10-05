@@ -1,0 +1,17 @@
+kind: Service
+metadata:
+  labels:
+    postgres-operator.crunchydata.com/cluster: hippo
+    postgres-operator.crunchydata.com/role: pgbouncer
+  name: hippo-pgbouncer-nodeport
+spec:
+  ports:
+  - name: pgbouncer
+    port: 5432
+    protocol: TCP
+    targetPort: pgbouncer
+  selector:
+    postgres-operator.crunchydata.com/cluster: hippo
+    postgres-operator.crunchydata.com/role: pgbouncer
+  type: NodePort
+
